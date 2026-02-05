@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tilmelding til Optimeet Messen 2026</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+            margin: 0;
+            padding: 48px 16px;
+            min-height: 100vh;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            background: #053a4a;
+            color: #0f172a;
+        }
+
+        .form {
+            width: 100%;
+            max-width: 520px;
+            margin: 0 auto;
+            background: #ffffff;
+            border: 1px solid rgba(15, 23, 42, 0.08);
+            border-radius: 14px;
+            padding: 34px 40px;
+            box-shadow: 0 26px 60px rgba(0, 0, 0, 0.28);
+        }
+
+        .form-logo {
+            display: block;
+            max-width: 260px;
+            width: 100%;
+            height: auto;
+            margin: 0 auto 18px;
+        }
+
+        .form h1,
+        .form h3,
+        .form > p {
+            text-align: center;
+        }
+
+        .form h1 {
+            margin: 0;
+            font-size: 14px;
+            font-weight: 800;
+            letter-spacing: 0.2px;
+        }
+
+        .form h3 {
+            margin: 10px 0 4px;
+            font-size: 11px;
+            font-weight: 700;
+            color: rgba(15, 23, 42, 0.75);
+        }
+
+        .form > p {
+            margin: 0 0 14px;
+            font-size: 11px;
+            color: rgba(15, 23, 42, 0.75);
+        }
+
+        .section-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin: 14px 0 10px;
+            font-size: 11px;
+            font-weight: 700;
+            color: rgba(15, 23, 42, 0.65);
+            text-align: center;
+        }
+
+        .section-divider::before,
+        .section-divider::after {
+            content: "";
+            height: 1px;
+            background: rgba(15, 23, 42, 0.18);
+            flex: 1;
+        }
+
+        form {
+            margin-top: 18px;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px 18px;
+        }
+
+        .stack {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+            margin-top: 14px;
+        }
+
+        .field {
+            display: grid;
+            gap: 6px;
+        }
+
+        label {
+            font-size: 11px;
+            font-weight: 800;
+            color: rgba(15, 23, 42, 0.85);
+        }
+
+        .field:has(> input[required]) > label::after,
+        .field:has(> select[required]) > label::after,
+        .field:has(> textarea[required]) > label::after,
+        label.required-label::after {
+            content: " *";
+            color: #dc2626;
+            font-weight: 800;
+        }
+
+        input,
+        select {
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid #d1d5db;
+            border-radius: 9999px;
+            padding: 9px 12px;
+            font-size: 13px;
+            height: 36px;
+            outline: none;
+            background: #fff;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: #0ea5b7;
+            box-shadow: 0 0 0 3px rgba(14, 165, 183, 0.18);
+        }
+
+        .actions {
+            margin-top: 20px;
+        }
+
+        #formStatus {
+            margin: 10px 0 0;
+            font-size: 12px;
+            color: rgba(15, 23, 42, 0.8);
+        }
+
+        button[type="submit"] {
+            border: 0;
+            border-radius: 9999px;
+            padding: 11px 16px;
+            font-size: 14px;
+            font-weight: 700;
+            background: #0b7285;
+            color: #ffffff;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button[type="submit"]:hover {
+            background: #095f6f;
+        }
+
+        .customize-box {
+            margin-top: 22px;
+            padding: 18px;
+            border-radius: 12px;
+            background: #eef1f4;
+            border: 1px solid #e5e7eb;
+            width: 100%;
+        }
+
+        .customize-box h2 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin: 0 0 14px;
+            font-size: 11px;
+            font-weight: 800;
+            color: rgba(15, 23, 42, 0.75);
+        }
+
+        .customize-box h2::before,
+        .customize-box h2::after {
+            content: "";
+            height: 1px;
+            background: rgba(15, 23, 42, 0.18);
+            flex: 1;
+        }
+
+        .customize-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+
+        textarea {
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid #d1d5db;
+            border-radius: 9999px;
+            padding: 9px 12px;
+            font-size: 13px;
+            outline: none;
+            background: #fff;
+            resize: none;
+            height: 36px;
+            min-height: 36px;
+            overflow: auto;
+        }
+
+        textarea:focus {
+            border-color: #0ea5b7;
+            box-shadow: 0 0 0 3px rgba(14, 165, 183, 0.18);
+        }
+
+        .vilkar {
+            margin-top: 22px;
+        }
+
+        .vilkar-title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin: 0;
+            font-size: 11px;
+            font-weight: 800;
+            text-align: center;
+            color: rgba(15, 23, 42, 0.75);
+        }
+
+        .vilkar-title::before,
+        .vilkar-title::after {
+            content: "";
+            height: 1px;
+            background: rgba(15, 23, 42, 0.18);
+            flex: 1;
+        }
+
+        .vilkar-accept {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        .vilkar-accept input[type="checkbox"] {
+            margin-top: 3px;
+            width: 18px;
+            height: 18px;
+        }
+
+        .vilkar-accept label {
+            font-weight: 500;
+            line-height: 1.4;
+            font-size: 12px;
+        }
+
+        .bekræft p {
+            margin: 10px 0 0;
+            font-size: 12px;
+            line-height: 1.5;
+            color: rgba(15, 23, 42, 0.75);
+        }
+
+        @media (max-width: 900px) {
+            .grid-3 {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+            .form {
+                padding: 28px 22px;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .grid-3 {
+                grid-template-columns: 1fr;
+            }
+
+            .customize-grid {
+                grid-template-columns: 1fr;
+            }
+
+            body {
+                padding: 32px 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="form">
+        <img class="form-logo" src="img/optimeet-messen-logo.webp" alt="OPTIMEET Messen logo">
+        <h1>OPTIMEET MESSEN 2026 - Ja tak, jeg vil gerne deltage</h1>
+        <h3>Sidste chance for at tilmelde dig:</h3>
+        <p>13-03-2026 16:30</p>
+        <form id="tilmeldingForm" action="" method="post">
+            <p class="section-divider">Udfyld dine oplysninger for at tilmelde dig</p>
+            <div class="grid-3">
+                <div class="field">
+                    <label for="fornavn">Fornavn</label>
+                    <input type="text" id="fornavn" name="fornavn" autocomplete="given-name" required>
+                </div>
+                <div class="field">
+                    <label for="efternavn">Efternavn</label>
+                    <input type="text" id="efternavn" name="efternavn" autocomplete="family-name" required>
+                </div>
+                <div class="field">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" autocomplete="email" required>
+                </div>
+                <div class="field">
+                    <label for="mobilnummer">Mobilnummer</label>
+                    <input type="tel" id="mobilnummer" name="mobilnummer" autocomplete="tel" required placeholder=" Start med landekode f.eks +45">
+                </div>
+                <div class="field">
+                    <label for="firma">Firma</label>
+                    <input type="text" id="firma" name="firma" autocomplete="organization" required>
+                </div>
+                <div class="field">
+                    <label for="titel">Titel</label>
+                    <input type="text" id="titel" name="titel" autocomplete="organization-title" required>
+                </div>
+            </div>
+
+            <div class="stack">
+                <div class="field">
+                    <label for="adresse">Adresse</label>
+                    <input type="text" id="adresse" name="adresse" autocomplete="street-address" required>
+                </div>
+                <div class="field">
+                    <label for="by">By</label>
+                    <input type="text" id="by" name="by" autocomplete="address-level2" required>
+                </div>
+                <div class="field">
+                    <label for="postnummer">Postnummer</label>
+                    <input type="text" id="postnummer" name="postnummer" autocomplete="postal-code" required>
+                </div>
+                <div class="field">
+                    <label for="land">Land</label>
+                    <select id="land" name="land" autocomplete="country-name" required>
+                        <option value="" selected disabled>Vælg land</option>
+                        <option value="DK">Danmark</option>
+                        <option value="NO">Norge</option>
+                        <option value="SE">Sverige</option>
+                        <option value="DE">Tyskland</option>
+                        <option value="NL">Holland</option>
+                        <option value="GB">Storbritannien</option>
+                        <option value="US">USA</option>
+
+                    </select>
+                </div>
+            </div>
+
+            <section class="customize-box" aria-label="Tilpas venligt din oplevelse">
+                <h2>Tilpas venligt din oplevelse</h2>
+                <div class="customize-grid">
+                    <div class="field">
+                        <label for="tilpasning_kommentar">Firma hjemmeside</label>
+                        <textarea id="tilpasning_kommentar" name="tilpasning_kommentar" rows="1" required></textarea>
+                    </div>
+                    <div class="field">
+                        <label for="tilpasning_valg_1">Hvor mange møder-konferencer og eller events planlægger du om året?</label>
+                        <select required id="tilpasning_valg_1" name="tilpasning_valg_1">
+                            <option value="" selected disabled>Vælg en mulighed</option>
+                            <option value="1-5 gange">Ca. 1-5 gange pr. år</option>
+                            <option value="6-10 gange">Ca. 6-10 gange pr. år</option>
+                            <option value="11-15 gange">Ca. 11-15 gange pr. år</option>
+                            <option value="flere end 15 gange">Flere end 15 gange pr. år</option>
+                            <option value="planlægger ikke møder-konferencer og events">Jeg planlægger IKKE møder-konferencer og events</option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label for="tilpasning_valg_2">Ønsker du at modtage OPTIMEET News</label>
+                        <select id="tilpasning_valg_2" name="tilpasning_valg_2">
+                            <option value="" selected disabled>Vælg en mulighed</option>
+                            <option value="Ja">Ja tak</option>
+                            <option value="Nej">Nej tak</option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label for="tilpasning_valg_3">Ønsker du at modtage vores gratis OPTIMEET Magasin?</label>
+                        <select id="tilpasning_valg_3" name="tilpasning_valg_3">
+                            <option value="" selected disabled>Vælg en mulighed</option>
+                            <option value="Ja">Ja tak</option>
+                            <option value="Nej">Nej tak</option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+
+            <section class="vilkar" aria-label="Vilkår">
+                <p class="vilkar-title">Acceptér de følgende vilkår for at tilmelde dig</p>
+                <div class="vilkar-accept">
+                    <input type="checkbox" id="accept_vilkar" name="accept_vilkar" value="Ja" required>
+                    <label for="accept_vilkar">Jeg accepterer vilkår og betingelser for deltagelse på OPTIMEET Messen 2026 Læs mere <a target="_blank" href="https://pack.to/da/terms/132">her</a> .</label>
+                </div>
+                <div class="bekræft">
+                    <p>
+                        Du modtager en mail og sms inden ankomst med adgang til platformen dit personlige Messe Site, der indeholder bl.a. det digitale program og tilpasset information til dig. Gem dit Messe Site til din telefons hjemmeskærm for den bedste oplevelse.
+                    </p>
+                    
+                </div>
+            </section>
+
+            <div class="actions">
+                <button id="submitBtn" type="submit">Tilmeld</button>
+                <p id="formStatus" role="status" aria-live="polite"></p>
+            </div>
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>
+        (function () {
+            const SERVICE_ID = "service_442667";
+            const TEMPLATE_ID = "template_dcibvzg";
+            const PUBLIC_KEY = "A869UswyStyZzB5GS";
+
+            const form = document.getElementById("tilmeldingForm");
+            const statusEl = document.getElementById("formStatus");
+            const submitBtn = document.getElementById("submitBtn");
+
+            function setStatus(message, type) {
+                statusEl.textContent = message;
+                statusEl.dataset.type = type || "";
+            }
+
+            emailjs.init({ publicKey: PUBLIC_KEY });
+
+            form.addEventListener("submit", async function (e) {
+                e.preventDefault();
+
+                submitBtn.disabled = true;
+                setStatus("Sender...", "pending");
+
+                try {
+                    await emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form);
+                    setStatus("Tak! Din tilmelding er sendt.", "success");
+                    form.reset();
+                } catch (err) {
+                    setStatus("Der opstod en fejl. Prøv igen om lidt.", "error");
+                } finally {
+                    submitBtn.disabled = false;
+                }
+            });
+        })();
+    </script>
+</body>
+</html>
